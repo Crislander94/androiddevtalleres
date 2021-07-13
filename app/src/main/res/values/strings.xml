@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Registrar</string>
+    <string name="ejemplo_new_activity">Nueva Pantalla</string>
+
+    <!--  Strings para labels y para inputs del login  -->
+    <string name="lbl_name">Nombre: </string>
+    <string name="name_usuario">Usuario</string>
+    <string name="lbl_password">Contraseña: </string>
+    <string name="constraseña_usuario">Contraseña</string>
+    <string name="aceptar_text">Aceptar</string>
+    <string name="cancelar_text">Cancelar</string>
+    <string name="nuevo_user">Nuevo Usuario</string>
+    <!-- Formulario de Registro Strings -->
+    <string name="title_activity_registrar">Registrar Usuario</string>
+    <string name="hint_name_usuario">Usuario</string>
+    <string name="hint_last_name_usuario">Last Name</string>
+    <string name="hint_years">Años</string>
+    <string name="hint_phone">Telefono</string>
+    <string name="hint_email">Email</string>
+    <string name="lbl_masculino">Masculino</string>
+    <string name="lbl_femenino">Femenino</string>
+    <string name="btn_registrar">Registrar</string>
+    <string name="btn_cancelar_registro">Cancelar</string>
+    <string name="date_nac">FechaNacimiento</string>
+    <string-array name="ciudades">
+        <item>Guayaquil</item>
+        <item>Quito</item>
+        <item>Cuenca</item>
+        <item>Machala</item>
+    </string-array>
+    <!--Strings  para el menu -->
+    <string name="configuracion">configuracion</string>
+    <string name="idioma">idioma</string>
+    <string name="contacto">contacto</string>
+    <string name="salir">salir</string>
+
+    <!-- Strings Acerca de -->
+    <string name="title_acerca_de">Acerca De</string>
+    <string name="btn_volver">Volver al Login</string>
+    <string name="description_Image">Reunion Grupal por plataforma ZOOM</string>
+    <string name="integrante1">Jaime Mozquez</string>
+    <string name="integrante2">Michael Espinoza</string>
+    <string name="integrante3">Cristhian Baidal</string>
+    <string name="integrantes">Integrantes:</string>
+</resources>

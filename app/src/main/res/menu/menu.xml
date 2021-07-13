@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity">
+    <item android:id="@+id/configuracion"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/configuracion">
+    <menu>
+        <item android:id="@+id/idioma"
+            android:icon="@drawable/ic_language"
+            android:title="@string/idioma"/>
+
+        <item android:id="@+id/contacto"
+            android:icon="@drawable/icon_user"
+            android:title="@string/contacto"/>
+    </menu>
+</item>
+    <item
+        android:id="@+id/acercade"
+        android:icon="@drawable/ic_acerca_of_de"
+        android:title="@string/title_acerca_de"
+        android:actionLayout="@layout/acercade"/>
+    <item
+        android:id="@+id/salir"
+        android:icon="@color/black"
+        android:title="@string/salir" />
+</menu>
