@@ -11,6 +11,7 @@ public class AcercadeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acercade);
+        String nueva_variable  = "";
     }
     public void goToLogin(View view){
         Intent intent = new Intent(this, LoginActivity.class);
