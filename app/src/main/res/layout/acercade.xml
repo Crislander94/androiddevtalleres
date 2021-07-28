@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#309AED"
-            android:onClick="goToLogin"
+            android:onClick="eraseData"
             android:padding="10dp"
             android:text="@string/borrar_data_preferences"
             android:textColor="#F4F4F4" />

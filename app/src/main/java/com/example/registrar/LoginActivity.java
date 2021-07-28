@@ -1,8 +1,10 @@
 package com.example.registrar;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -38,11 +40,37 @@ public class LoginActivity extends AppCompatActivity {
             String V_PASS = TXT_PASS.getText().toString();
             if (V_USR.equals("admin") && V_PASS.equals("admin")){
                 Toast.makeText(getApplicationContext(),"Datos correcto",Toast.LENGTH_SHORT).show();
-                guardarCredenciales();
+                MostrarGuardarPreferencias();
             }else {
                 Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrecta",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void MostrarGuardarPreferencias(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle("Guardar Preferencias");
+        builder.setMessage("¿Quieres guardar preferencias?")
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "Guardando Preferencias",Toast.LENGTH_SHORT);
+                        guardarCredenciales();
+                        GoAcercaDe(getApplicationContext());
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        GoAcercaDe(getApplicationContext());
+                    }
+                })
+                .setCancelable(false)
+                .show();
+    }
+    public void GoAcercaDe(Context view){
+        Intent intent = new Intent(this, AcercadeActivity.class);
+        startActivity(intent);
     }
     public void guardarCredenciales(){
         SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);

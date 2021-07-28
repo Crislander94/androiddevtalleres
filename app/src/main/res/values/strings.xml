@@ -45,4 +45,10 @@
 
     <!-- Data Shared Preferences -->
     <string name="borrar_data_preferences">Borrar Datos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Guardar Preferencias</string>
+    <string name="rdbuttonSi_fragment">SI</string>
+    <string name="rdbuttonNo_fragment">NO</string>
+    <string name="btnSeleccionar">Seleccionar</string>
+    <string name="btnCancelar">Cancelar</string>
 </resources>
