@@ -62,7 +62,7 @@
             tools:visibility="visible" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnVolverLogin"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,6 +71,18 @@
             android:onClick="goToLogin"
             android:padding="10dp"
             android:text="@string/btn_volver"
+            android:textColor="#F4F4F4" />
+
+        <Button
+            android:id="@+id/btnBorrarSharedPreferences"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#309AED"
+            android:onClick="goToLogin"
+            android:padding="10dp"
+            android:text="@string/borrar_data_preferences"
             android:textColor="#F4F4F4" />
     </LinearLayout>
 

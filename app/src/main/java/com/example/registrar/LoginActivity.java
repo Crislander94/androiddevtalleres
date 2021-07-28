@@ -24,12 +24,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         TXT_USR =findViewById(R.id.editTextTextPersonName);
-        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        TXT_USR.setText(preferences.getString("usuario",""));
-
         TXT_PASS =findViewById(R.id.editTextTextPassword);
-        SharedPreferences preferences_1 = getSharedPreferences("datos1", Context.MODE_PRIVATE);
-        TXT_PASS.setText(preferences.getString("password",""));
+
+        cargarCredenciales();
+        if(TXT_USR.getText().toString().equals("admin") && TXT_PASS.getText().toString().equals("admin")){
+            Intent intent = new Intent(this,  AcercadeActivity.class);
+            startActivity(intent);
+        }
         BTN_NuevoRegistro = findViewById(R.id.btn_nuevo_usuario);
         BTN_ING = findViewById(R.id.button);
         BTN_ING.setOnClickListener(v -> {
@@ -37,19 +38,29 @@ public class LoginActivity extends AppCompatActivity {
             String V_PASS = TXT_PASS.getText().toString();
             if (V_USR.equals("admin") && V_PASS.equals("admin")){
                 Toast.makeText(getApplicationContext(),"Datos correcto",Toast.LENGTH_SHORT).show();
-                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                SharedPreferences.Editor Obj_editor = preferencias.edit();
-                Obj_editor.putString("usuario",TXT_USR.getText().toString());
-                Obj_editor.commit();
-
-                SharedPreferences preferencias1 = getSharedPreferences("datos1", Context.MODE_PRIVATE);
-                SharedPreferences.Editor Obj_editor1 = preferencias1.edit();
-                Obj_editor1.putString("password",TXT_PASS.getText().toString());
-                Obj_editor1.commit();
+                guardarCredenciales();
             }else {
                 Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrecta",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void guardarCredenciales(){
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String user_name = TXT_USR.getText().toString();
+        String password_user = TXT_PASS.getText().toString();
+
+        SharedPreferences.Editor Obj_editor = preferences.edit();
+        Obj_editor.putString("user",user_name);
+        Obj_editor.putString("password",password_user);
+        Obj_editor.commit();
+    }
+    public void cargarCredenciales(){
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String user_name = preferences.getString("user", "");
+        String password_user = preferences.getString("password", "");
+
+        TXT_USR.setText(user_name);
+        TXT_PASS.setText(password_user);
     }
      public void sendMessage(View view) {
         // Do something in response to button
@@ -58,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     //Create Menu
     public boolean onCreateOptionsMenu(Menu mimenu){
-
         getMenuInflater().inflate(R.menu.menu,mimenu);
         return true;
     }

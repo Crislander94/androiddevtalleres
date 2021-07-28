@@ -42,4 +42,7 @@
     <string name="integrante2">Michael Espinoza</string>
     <string name="integrante3">Cristhian Baidal</string>
     <string name="integrantes">Integrantes:</string>
+
+    <!-- Data Shared Preferences -->
+    <string name="borrar_data_preferences">Borrar Datos</string>
 </resources>
