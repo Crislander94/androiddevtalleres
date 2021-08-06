@@ -93,7 +93,8 @@ public class LoginActivity extends AppCompatActivity {
      public void sendMessage(View view) {
         // Do something in response to button
         Intent intent = new Intent(this,  MainActivity.class);
-        startActivity(intent);
+//        startActivity(intent,0);
+        startActivityForResult(intent,0);
     }
     //Create Menu
     public boolean onCreateOptionsMenu(Menu mimenu){
