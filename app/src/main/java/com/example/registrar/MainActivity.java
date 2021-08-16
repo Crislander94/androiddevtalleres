@@ -1,7 +1,9 @@
 package com.example.registrar;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -89,7 +91,27 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"seleccione sexo",Toast.LENGTH_SHORT).show();
             }
             else {
-                Toast.makeText(getApplicationContext(),"Usuario:"+V_USR+"\nContraseña:"+V_PASS+"\nEmail: "+V_EMAIL+"\nTelefono:"+V_PHONE+"\nCiudad:"+ciudad_selected+"\nFecha Nacimiento:"+fecha_nacimiento+"\nSexo: "+sexo,Toast.LENGTH_SHORT).show();
+                // Creacion de la conexion con la base de datos
+                AdminSliteOpenHelper usuarios = new AdminSliteOpenHelper(this, "prueba_user", null, 1);
+                // Poner db en modo lectura y escritura
+                SQLiteDatabase db = usuarios.getWritableDatabase();
+                //Objeto para guardar data que será almacenada en la DB
+                ContentValues data_user = new ContentValues();
+                data_user.put("username", V_USR );
+                data_user.put("password", V_PASS );
+                data_user.put("email", V_EMAIL );
+                data_user.put("telefono", V_PHONE );
+                data_user.put("fecha_nac", fecha_nacimiento );
+                data_user.put("ciudad", ciudad_selected );
+                data_user.put("sexo", sexo);
+                // Insertamos objeto en la tabla con los datos
+                db.insert("users", null, data_user);
+                // Cerramos la base de datos
+                db.close();
+                //Mostramos mensaje de que esta bien OK y mandamos al login Activity
+                Intent i = new Intent(this, LoginActivity.class);
+                Toast.makeText(getApplicationContext(),"Registro en la base de datos Exitoso "+ "Usuario:"+V_USR+"\nContraseña:"+V_PASS+"\nEmail: "+V_EMAIL+"\nTelefono:"+V_PHONE+"\nCiudad:"+ciudad_selected+"\nFecha Nacimiento:"+fecha_nacimiento+"\nSexo: "+sexo,Toast.LENGTH_SHORT).show();
+                startActivity(i);
             }
         });
     }
