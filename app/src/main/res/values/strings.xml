@@ -28,6 +28,7 @@
         <item>Cuenca</item>
         <item>Machala</item>
     </string-array>
+    <string name="hint_cedula_user">Cedula</string>
     <!--Strings  para el menu -->
     <string name="configuracion">configuracion</string>
     <string name="idioma">idioma</string>

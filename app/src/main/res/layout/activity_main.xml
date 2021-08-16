@@ -53,6 +53,15 @@
             android:inputType="textPassword" />
 
         <EditText
+            android:id="@+id/cedulaUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:hint="@string/hint_cedula_user"
+            android:inputType="number" />
+
+        <EditText
             android:id="@+id/edit_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

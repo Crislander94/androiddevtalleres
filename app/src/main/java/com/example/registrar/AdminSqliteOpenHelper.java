@@ -4,8 +4,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-public class AdminSliteOpenHelper extends SQLiteOpenHelper {
-    public AdminSliteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public class AdminSqliteOpenHelper extends SQLiteOpenHelper {
+    public AdminSqliteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -17,6 +17,7 @@ public class AdminSliteOpenHelper extends SQLiteOpenHelper {
                                 "password TEXT, " +
                                 "email TEXT, " +
                                 "telefono TEXT, " +
+                                "cedula TEXT, " +
                                 "fecha_nac Text, " +
                                 "ciudad Text, " +
                                 "sexo TEXT )";

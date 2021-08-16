@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    EditText TXT_US,TXT_PASS, TXT_EMAIL, TXT_PHONE;
+    EditText TXT_US,TXT_PASS, TXT_EMAIL, TXT_PHONE, txtCedula;
     Button BTN_REGIS;
     RadioButton RDFemenino, RDMasculino;
     Calendar calendar;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         BTN_REGIS=  findViewById(R.id.btn_registrar);
         RDFemenino =  findViewById(R.id.rdFemenino);
         RDMasculino =   findViewById(R.id.rdMasculino);
+        txtCedula = findViewById(R.id.cedulaUser);
         date = findViewById(R.id.dateNac);
         calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -71,14 +72,17 @@ public class MainActivity extends AppCompatActivity {
             String ciudad_selected = mis_ciudades.getSelectedItem().toString();
             String V_PHONE= TXT_PHONE.getText().toString();
             String fecha_nacimiento  = date.getText().toString();
+            String cedula = txtCedula.getText().toString();
 
             if(RDFemenino.isChecked()){
                 sexo = "Femenino";
-            }else if(RDMasculino.isChecked()){
+            }else if(RDMasculino.isChecked()) {
                 sexo = "Masculino";
             }
             if (V_USR.equals("")){
                 Toast.makeText(getApplicationContext(),"falta usuario",Toast.LENGTH_SHORT).show();
+            }else if (cedula.equals("")) {
+                Toast.makeText(getApplicationContext(), "Falta Cedula", Toast.LENGTH_SHORT).show();
             }else if (V_PASS.equals("")){
                 Toast.makeText(getApplicationContext(),"Falta contraseña",Toast.LENGTH_SHORT).show();
             }else if (V_EMAIL.equals("")){
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 // Creacion de la conexion con la base de datos
-                AdminSliteOpenHelper usuarios = new AdminSliteOpenHelper(this, "prueba_user", null, 1);
+                AdminSqliteOpenHelper usuarios = new AdminSqliteOpenHelper(this, "prueba_user", null, 1);
                 // Poner db en modo lectura y escritura
                 SQLiteDatabase db = usuarios.getWritableDatabase();
                 //Objeto para guardar data que será almacenada en la DB
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 data_user.put("username", V_USR );
                 data_user.put("password", V_PASS );
                 data_user.put("email", V_EMAIL );
+                data_user.put("cedula", cedula );
                 data_user.put("telefono", V_PHONE );
                 data_user.put("fecha_nac", fecha_nacimiento );
                 data_user.put("ciudad", ciudad_selected );
