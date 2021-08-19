@@ -48,20 +48,14 @@
                     android:onClick="Eliminar"
                     android:text="@string/btnEliminar" />
 
-            </LinearLayout>
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btnCancelar" />
 
-            <TextView
-                android:id="@+id/txtRegistrar2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:layout_marginBottom="32dp"
-                android:layout_weight="1"
-                android:text="@string/title_activity_registrar"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
