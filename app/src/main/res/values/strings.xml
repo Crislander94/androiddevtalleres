@@ -52,4 +52,10 @@
     <string name="rdbuttonNo_fragment">NO</string>
     <string name="btnSeleccionar">Seleccionar</string>
     <string name="btnCancelar">Cancelar</string>
+
+    <!-- Botones-->
+    <string name="btnBuscar">Buscar</string>
+    <string name="btnActualizar">Actualizar</string>
+    <string name="btnEliminar">Eliminar</string>
+    <string name="consultas_string">Consultas</string>
 </resources>

@@ -110,6 +110,10 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, AcercadeActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.Consultas:
+                Intent intent1 = new Intent(this, MyFirstCRUD.class);
+                startActivity(intent1);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

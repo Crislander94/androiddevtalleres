@@ -121,28 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void Buscar (View view){
-        AdminSqliteOpenHelper usuarios = new AdminSqliteOpenHelper(this, "prueba_user", null, 1);
-        SQLiteDatabase db = usuarios.getWritableDatabase();
 
-        String Sql = "Select * from users where cedula = " + txtCedula.getText().toString();
-        Cursor fila = db.rawQuery(Sql, null);
-        if(fila.moveToFirst()){
-            int id = fila.getInt(0);
-            String username = fila.getString(1);
-            String password= fila.getString(2);
-            String email= fila.getString(3);
-            String phone= fila.getString(4);
-            String cedula = fila.getString(5);
-            String fecha_nacimiento  = fila.getString(6);
-            String ciudad = fila.getString(7);
-            String sexo = fila.getString(8);
-            db.close();
-        }else {
-            Toast.makeText(this , "El usuario que intentas encontrar no existe", Toast.LENGTH_LONG).show();
-            db.close();
-        }
-    }
     public void LoginActivity(View view){
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
