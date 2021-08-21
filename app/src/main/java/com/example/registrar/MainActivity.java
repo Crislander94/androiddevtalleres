@@ -105,11 +105,11 @@ public class MainActivity extends AppCompatActivity {
                 data_user.put("username", V_USR );
                 data_user.put("password", V_PASS );
                 data_user.put("email", V_EMAIL );
-                data_user.put("cedula", cedula );
                 data_user.put("telefono", V_PHONE );
                 data_user.put("fecha_nac", fecha_nacimiento );
                 data_user.put("ciudad", ciudad_selected );
                 data_user.put("sexo", sexo);
+                data_user.put("cedula", cedula );
                 // Insertamos objeto en la tabla con los datos
                 db.insert("users", null, data_user);
                 // Cerramos la base de datos
@@ -127,36 +127,36 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show();
-        // La actividad está a punto de hacerse visible.
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
-        // La actividad se ha vuelto visible (ahora se "reanuda").
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "OnPause", Toast.LENGTH_SHORT).show();
-        // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show();
-        // La actividad ya no es visible (ahora está "detenida")
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "OnDestroy", Toast.LENGTH_SHORT).show();
-        // La actividad está a punto de ser destruida.
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show();
+//        // La actividad está a punto de hacerse visible.
+//    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
+//        // La actividad se ha vuelto visible (ahora se "reanuda").
+//    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Toast.makeText(this, "OnPause", Toast.LENGTH_SHORT).show();
+//        // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
+//    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show();
+//        // La actividad ya no es visible (ahora está "detenida")
+//    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Toast.makeText(this, "OnDestroy", Toast.LENGTH_SHORT).show();
+//        // La actividad está a punto de ser destruida.
+//    }
 
 
 }

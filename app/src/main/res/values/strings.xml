@@ -58,5 +58,5 @@
     <string name="btnActualizar">Actualizar</string>
     <string name="btnEliminar">Eliminar</string>
     <string name="consultas_string">Consultas</string>
-    <string name="sdf">select username from users where id = 1</string>
+    <string name="btnRetroceder">Retroceder</string>
 </resources>

@@ -49,11 +49,12 @@
                     android:text="@string/btnEliminar" />
 
                 <Button
-                    android:id="@+id/btnCancelar"
+                    android:id="@+id/btnRetroceder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/btnCancelar" />
+                    android:onClick="Retroceder"
+                    android:text="@string/btnRetroceder" />
 
             </LinearLayout>
 
@@ -71,7 +72,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtRegistrar">
 
                 <EditText
-                    android:id="@+id/edit_usuario"
+                    android:id="@+id/xedit_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -81,7 +82,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/nuevapassword"
+                    android:id="@+id/xnuevapassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -91,7 +92,7 @@
                     android:inputType="textPassword" />
 
                 <EditText
-                    android:id="@+id/cedulaUser"
+                    android:id="@+id/xcedulaUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -100,7 +101,7 @@
                     android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/edit_correo"
+                    android:id="@+id/xedit_correo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -110,7 +111,7 @@
                     android:inputType="textEmailAddress" />
 
                 <EditText
-                    android:id="@+id/editPhone"
+                    android:id="@+id/xeditPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -120,7 +121,7 @@
                     android:inputType="phone" />
 
                 <EditText
-                    android:id="@+id/dateNac"
+                    android:id="@+id/xdateNac"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -132,7 +133,7 @@
                     android:maxLines="1" />
 
                 <Spinner
-                    android:id="@+id/ciudades"
+                    android:id="@+id/xciudades"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp" />
@@ -145,13 +146,13 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/rdFemenino"
+                        android:id="@+id/xrdFemenino"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/lbl_femenino" />
 
                     <RadioButton
-                        android:id="@+id/rdMasculino"
+                        android:id="@+id/xrdMasculino"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/lbl_masculino" />
