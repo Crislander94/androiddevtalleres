@@ -63,23 +63,30 @@ public class MyFirstCRUD extends AppCompatActivity {
     public void Buscar (View view){
         AdminSqliteOpenHelper usuarios = new AdminSqliteOpenHelper(this, "prueba_user", null, 1);
         SQLiteDatabase db = usuarios.getWritableDatabase();
-        Toast.makeText(getApplicationContext(),usuarios.toString(),Toast.LENGTH_SHORT).show();
         String valueConsult = txtCedula.getText().toString();
         if(!valueConsult.isEmpty()){
-            Cursor fila = db.rawQuery("select * from users where cedula = "+valueConsult, null);
+            Cursor fila = db.rawQuery("select * from users where cedula = '"+valueConsult+"'", null);
             if(fila.moveToFirst()){
                 int id = fila.getInt(0);
                 String username = fila.getString(1);
                 String password= fila.getString(2);
                 String email= fila.getString(3);
                 String phone= fila.getString(4);
-                String cedula = fila.getString(5);
-                String fecha_nacimiento  = fila.getString(6);
-                String ciudad = fila.getString(7);
-                String sexo = fila.getString(8);
+                String fecha_nacimiento  = fila.getString(5);
+                String ciudad = fila.getString(6);
+                String sexo = fila.getString(7);
                 txtusername.setText(username);
+                txtpassword.setText(password);
+                txtmail.setText(email);
+                txtPhone.setText(phone);
+                date1.setText(fecha_nacimiento);
+                if(sexo.equals("Femenino")){
+                    rdF.setChecked(true);
+                }else{
+                    rdM.setChecked(true);
+                }
             }else {
-                Toast.makeText(this , "El usuario que intentas encontrar no existe"+valueConsult, Toast.LENGTH_LONG).show();
+                Toast.makeText(this , "El usuario que intentas encontrar no existe "+valueConsult, Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(this , "El campo cedula está vacío", Toast.LENGTH_LONG).show();
@@ -87,31 +94,35 @@ public class MyFirstCRUD extends AppCompatActivity {
         db.close();
     }
     public void Actualizar (View v){
-        String V_USR= txtusername.getText().toString();
-        String V_PASS= txtpassword.getText().toString();
-        String V_EMAIL= txtmail.getText().toString();
+        String value_username= txtusername.getText().toString();
+        String value_password = txtpassword.getText().toString();
+        String value_mail= txtmail.getText().toString();
         String sexo = "";
         String ciudad_selected = ciudades.getSelectedItem().toString();
-        String V_PHONE= txtPhone.getText().toString();
+        String value_phone= txtPhone.getText().toString();
         String fecha_nacimiento  = date1.getText().toString();
         String cedula = txtCedula.getText().toString();
         AdminSqliteOpenHelper usuarios = new AdminSqliteOpenHelper(this, "prueba_user", null, 1);
         SQLiteDatabase db = usuarios.getWritableDatabase();
         if(!cedula.isEmpty()){
             ContentValues data_user = new ContentValues();
-            data_user.put("username", V_USR );
-            data_user.put("password", V_PASS );
-            data_user.put("email", V_EMAIL );
-            data_user.put("cedula", cedula );
-            data_user.put("telefono", V_PHONE );
+            data_user.put("username", value_username );
+            data_user.put("password", value_password );
+            data_user.put("email", value_mail );
+            data_user.put("telefono", value_phone );
             data_user.put("fecha_nac", fecha_nacimiento );
             data_user.put("ciudad", ciudad_selected );
             data_user.put("sexo", sexo);
             // Insertamos objeto en la tabla con los datos
-            int cantidad = db.update("users",data_user ,"cedula = "+cedula, null);
+            int cantidad = db.update("users",data_user ,"cedula = '"+cedula+"'", null);
             // Cerramos la base de datos
             if(cantidad == 1){
                 Toast.makeText(this, "Usuario modificado con exito", Toast.LENGTH_SHORT).show();
+                txtusername.setText("");
+                txtpassword.setText("");
+                txtmail.setText("");
+                txtPhone.setText("");
+                date1.setText("");
             }else{
                 Toast.makeText(this, "No se pudo modificar al usuario", Toast.LENGTH_SHORT).show();
             }
@@ -125,12 +136,17 @@ public class MyFirstCRUD extends AppCompatActivity {
         SQLiteDatabase db = usuarios.getWritableDatabase();
         if(!cedula.isEmpty()){
             // Insertamos objeto en la tabla con los datos
-            int cantidad = db.delete("users" ,"cedula = "+cedula, null);
+            int cantidad = db.delete("users" ,"cedula = '"+cedula+"'", null);
             // Cerramos la base de datos
             if(cantidad == 1){
+                txtusername.setText("");
+                txtpassword.setText("");
+                txtmail.setText("");
+                txtPhone.setText("");
+                date1.setText("");
                 Toast.makeText(this, "Usuario eliminado con exito", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(this, "No se pudo eliminado al usuario", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "El usuario encontrado no se encuentra", Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(this , "El campo cedula está vacío", Toast.LENGTH_LONG).show();

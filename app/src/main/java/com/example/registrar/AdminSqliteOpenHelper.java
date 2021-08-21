@@ -8,7 +8,16 @@ import android.support.annotation.Nullable;
     public AdminSqliteOpenHelper( Context context, String name,  SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
-
+//        String create_table = "CREATE TABLE users(" +
+//                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//                "username TEXT, " +
+//                "password TEXT, " +
+//                "email TEXT, " +
+//                "telefono TEXT, " +
+//                "cedula TEXT, " +
+//                "fecha_nac Text, " +
+//                "ciudad Text, " +
+//                "sexo TEXT )";
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT,email TEXT, telefono TEXT, fecha_nac Text, ciudad Text,sexo TEXT,cedula TEXT)");
