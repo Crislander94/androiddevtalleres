@@ -40,10 +40,7 @@ public class MyContentProvider extends AppCompatActivity {
     }
     public boolean chequearStatusPermiso(){
         boolean permisoContactos = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
-        if(permisoContactos){
-            return true;
-        }
-        return false;
+        return permisoContactos;
     }
     /**
      * Función que me permite Obtener los Conactos de mi telefono
