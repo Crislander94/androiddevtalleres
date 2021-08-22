@@ -59,4 +59,11 @@
     <string name="btnEliminar">Eliminar</string>
     <string name="consultas_string">Consultas</string>
     <string name="btnRetroceder">Retroceder</string>
+
+    <!-- Strings Content Providers -->
+    <string name="itemMenuProvider">Mis Contactos</string>
+    <string name="txtMainProviders">Mis contactos</string>
+    <string name="btnContactos">Listar Mis contactos</string>
+    <string name="txtRenderContactos">Esperando renderizado</string>
+
 </resources>

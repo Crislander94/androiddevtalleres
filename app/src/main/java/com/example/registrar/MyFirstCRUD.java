@@ -123,11 +123,14 @@ public class MyFirstCRUD extends AppCompatActivity {
                 txtmail.setText("");
                 txtPhone.setText("");
                 date1.setText("");
+                db.close();
             }else{
                 Toast.makeText(this, "No se pudo modificar al usuario", Toast.LENGTH_SHORT).show();
+                db.close();
             }
         }else{
             Toast.makeText(this , "El campo cedula está vacío", Toast.LENGTH_LONG).show();
+            db.close();
         }
     }
     public void Eliminar (View v){
@@ -145,11 +148,14 @@ public class MyFirstCRUD extends AppCompatActivity {
                 txtPhone.setText("");
                 date1.setText("");
                 Toast.makeText(this, "Usuario eliminado con exito", Toast.LENGTH_SHORT).show();
+                db.close();
             }else{
-                Toast.makeText(this, "El usuario encontrado no se encuentra", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "El usuario buscado no se encuentra", Toast.LENGTH_SHORT).show();
+                db.close();
             }
         }else{
             Toast.makeText(this , "El campo cedula está vacío", Toast.LENGTH_LONG).show();
+            db.close();
         }
 
         db.close();

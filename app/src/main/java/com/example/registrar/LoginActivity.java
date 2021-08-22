@@ -1,5 +1,6 @@
 package com.example.registrar;
 
+import android.content.ContentProvider;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -113,6 +114,10 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.Consultas:
                 Intent intent1 = new Intent(this, MyFirstCRUD.class);
                 startActivity(intent1);
+                return true;
+            case R.id.contentProvider:
+                Intent intent3 = new Intent(this, MyContentProvider.class);
+                startActivity(intent3);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
