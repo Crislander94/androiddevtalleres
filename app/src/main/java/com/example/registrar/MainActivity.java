@@ -1,6 +1,7 @@
 package com.example.registrar;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -130,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void LoginActivity(View view){
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setColor(Color.BLUE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
-
+        builder.setDefaults(Notification.DEFAULT_SOUND);
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-        NotificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
     }
 //    @Override
 //    protected void onStart() {
