@@ -5,6 +5,9 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     RadioButton RDFemenino, RDMasculino;
     Calendar calendar;
     EditText date;
+
+
+    //Variables notifiaciones
+    private final static String CHANNEL_ID = "NOTIFICACION";
+    private final static int NOTIFICACION_ID = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 //Mostramos mensaje de que esta bien OK y mandamos al login Activity
                 Intent i = new Intent(this, LoginActivity.class);
                 Toast.makeText(getApplicationContext(),"Registro en la base de datos Exitoso "+ "Usuario:"+V_USR+"\nContraseña:"+V_PASS+"\nEmail: "+V_EMAIL+"\nTelefono:"+V_PHONE+"\nCiudad:"+ciudad_selected+"\nFecha Nacimiento:"+fecha_nacimiento+"\nSexo: "+sexo,Toast.LENGTH_SHORT).show();
+                createNotification(V_USR);
                 startActivity(i);
             }
         });
@@ -126,7 +135,18 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
+    public void createNotification(String nombre){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.success_register);
+        builder.setContentTitle("Registro Exitoso");
+        builder.setContentText("Se ha registrado un nuevo usuario: "+ nombre);
+        builder.setColor(Color.BLUE);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
 
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        NotificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+    }
 //    @Override
 //    protected void onStart() {
 //        super.onStart();
