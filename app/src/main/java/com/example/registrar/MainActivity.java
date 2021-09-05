@@ -2,11 +2,15 @@ package com.example.registrar;
 
 import android.app.DatePickerDialog;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -127,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(this, LoginActivity.class);
                 Toast.makeText(getApplicationContext(),"Registro en la base de datos Exitoso "+ "Usuario:"+V_USR+"\nContraseña:"+V_PASS+"\nEmail: "+V_EMAIL+"\nTelefono:"+V_PHONE+"\nCiudad:"+ciudad_selected+"\nFecha Nacimiento:"+fecha_nacimiento+"\nSexo: "+sexo,Toast.LENGTH_SHORT).show();
                 createNotification(V_USR);
+                createNotificationChannel();
                 startActivity(i);
             }
         });
@@ -135,12 +140,30 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
+
+    private void createNotificationChannel() {
+        //Crear las notificaciones de canal, pero solo para API 26 + porque
+        //Las clases de notificaciones de canal son nuevas y no los soporta la libreria
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Notificacion";
+            String description = "Se ha añadido un usuario";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            //Registar el canal con el sistema, no se puede cambiar la importancia
+            // u otro comportamiento de la notifiaciones después de esto.
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
     public void createNotification(String nombre){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
         builder.setSmallIcon(R.drawable.success_register);
         builder.setContentTitle("Registro Exitoso");
         builder.setContentText("Se ha registrado un nuevo usuario: "+ nombre);
-        builder.setColor(Color.BLUE);
+        builder.setColor(Color.WHITE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
         builder.setDefaults(Notification.DEFAULT_SOUND);
