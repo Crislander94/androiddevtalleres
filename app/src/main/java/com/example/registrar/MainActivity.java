@@ -130,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
                 //Mostramos mensaje de que esta bien OK y mandamos al login Activity
                 Intent i = new Intent(this, LoginActivity.class);
                 Toast.makeText(getApplicationContext(),"Registro en la base de datos Exitoso "+ "Usuario:"+V_USR+"\nContraseña:"+V_PASS+"\nEmail: "+V_EMAIL+"\nTelefono:"+V_PHONE+"\nCiudad:"+ciudad_selected+"\nFecha Nacimiento:"+fecha_nacimiento+"\nSexo: "+sexo,Toast.LENGTH_SHORT).show();
+                //Se llama a la función
                 createNotification(V_USR);
+                //Se crea la notifiación del canal
                 createNotificationChannel();
                 startActivity(i);
             }
